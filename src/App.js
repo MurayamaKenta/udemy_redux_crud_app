@@ -1,4 +1,4 @@
-import React , { Component } from "react";
+import React  from "react";
 
 // function App() {
 //   return (
@@ -9,18 +9,29 @@ import React , { Component } from "react";
 // }
 
 const App = () => {
+  const profiles = [
+    {
+    name: 'kenta', age : 25,
+    },
+    {
+      name:'kazuki', age:99,
+    },
+    {
+      name:'ryu' , age :10,
+    }
+  ]
   return (
     <div>
-      <Cat />
-      <Cat />
-      <Cat />
+      {profiles.map((profile, index) => {
+        return <User name={profile.name} age={profile.age} key={index}/>
+      })}
   </div>
   )
 }
 
-const Cat = () => {
+const User = (props) => {
   return (
-    <div>iam cat!!</div>
+    <div>i am {props.name} and {props.age} years old</div>
   )
 }
 
