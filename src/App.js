@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
 
 // function App() {
 //   return (
@@ -9,30 +8,40 @@ import PropTypes from 'prop-types';
 //   );
 // }
 
-const App = () => {
-  const profiles = [
-    { name: 'kenta', age: 25, },
-    { name: 'kazuki', age: 99, },
-    { name: 1 }
-  ]
-  return (
-    <div>
-      {profiles.map((profile, index) => {
-        return <User name={profile.name} age={profile.age} key={index} />
-      })
-      }
-    </div>
-  )
+const App = () => (<Couter />)
+
+class Couter extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+    count: 0,
+    message : "message"
+  }
+  }
+
+  add = (e) => {
+    this.setState({
+      count: this.state.count + 1,
+      message:'add'
+    })
+  }
+
+  del = (e) => {
+    this.setState({
+      count: this.state.count - 1,
+      message:'del'
+    })
+}
+  render() {
+    return (
+      <div>
+        <div>{this.state.message} : {this.state.count}</div>
+        <button onClick={this.add}>+1</button>
+        <button onClick={this.del}>-1</button>
+      </div>
+    )
+  }
 }
 
-const User = (props) => {
-  return (
-    <div>i am {props.name} and {props.age} years old</div>
-  )
-}
-
-User.propsTypes = {
-  name : PropTypes.string,
-  age : PropTypes.number.isRequired,
-}
 export default App;
